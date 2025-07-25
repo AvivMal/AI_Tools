@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך פלטפורמות AI מומלצות - העיצוב האולטימטיבי</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter (general) and Heebo (Hebrew) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the Heebo font and dark mode */
+        body {
+            font-family: 'Heebo', 'Inter', sans-serif; /* Prioritize Heebo for Hebrew */
+            background: radial-gradient(circle at top left, #2a0a4a, #1a202c 70%), radial-gradient(circle at bottom right, #0a2a4a, #1a202c 70%); /* Dynamic background gradient */
+            background-attachment: fixed; /* Keep background fixed on scroll */
+            color: #e2e8f0; /* Light text color */
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchors */
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+        }
+
+        /* Keyframes for fade-in and scale-up animation on load */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Header styling with gradient and frosted glass effect */
+        .header-gradient {
+            background-image: linear-gradient(to right, #2c5282, #4c51bf); /* Blue-purple gradient */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        /* Card styling with enhanced shadows, gradients, and hover effects */
+        .card {
+            background: linear-gradient(135deg, #2d3748, #1a202c); /* Subtle internal card gradient */
+            border-radius: 0.75rem; /* Rounded corners */
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05); /* Deeper shadow with subtle inner border */
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            animation: fadeInScale 0.8s ease-out forwards; /* Apply fade-in animation */
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        /* Staggered animation for cards */
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+        .card:nth-child(9) { animation-delay: 0.9s; }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.04); /* More dramatic lift and slight scale */
+            /* Enhanced static glow on hover - removed pulsating animation */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 35px rgba(99, 179, 237, 1); /* Stronger, static blue glow */
+        }
+
+        /* Category title styling with gradient border and text shadow */
+        .category-title {
+            border-bottom: none; /* Remove default border */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative; /* For pseudo-element underline */
+            padding-right: 0.5rem; /* Space for emoji */
+        }
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to left, #63b3ed, #805ad5); /* Gradient underline */
+            border-radius: 2px;
+        }
+        .category-title span {
+            font-size: 2.8rem; /* Larger emoji size */
+            line-height: 1;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Subtle emoji glow */
+        }
+        .category-title h2 {
+            font-weight: 800; /* Extra bold for category titles */
+            text-shadow: 0 0 10px rgba(99, 179, 237, 0.5); /* Text glow for titles */
+        }
+
+        /* Platform name styling */
+        .platform-name {
+            font-size: 1.35rem; /* Slightly larger platform name */
+            font-weight: 700; /* Bolder */
+            margin-bottom: 0.75rem; /* More space below name */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Subtle text shadow */
+        }
+        .platform-name a {
+            color: #63b3ed; /* Light blue for links */
+            text-decoration: none; /* No underline by default */
+            transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+        }
+        .platform-name a:hover {
+            color: #90cdf4; /* Lighter blue on hover */
+            text-decoration: underline; /* Underline on hover */
+            text-shadow: 0 0 10px rgba(144, 205, 244, 0.8); /* Glow on hover */
+        }
+
+        /* General text styling */
+        p {
+            font-size: 0.95rem;
+            color: #cbd5e0; /* Slightly darker text for descriptions */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 sm:p-8">
+        <!-- Header Section -->
+        <header class="text-center mb-16 py-10 rounded-3xl header-gradient shadow-2xl relative overflow-hidden">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-4 leading-tight" style="text-shadow: 0 0 20px rgba(255,255,255,0.7);">
+                ✨ מדריך פלטפורמות AI מומלצות ✨
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-200 px-4 max-w-3xl mx-auto" style="text-shadow: 0 0 10px rgba(255,255,255,0.4);">
+                ברוכים הבאים למסע מרתק בעולם הבינה המלאכותית! כאן תמצאו אוסף של כלים מומלצים שיעזרו לכם ללמוד, ליצור ולהתפתח.
+            </p>
+            <!-- Decorative elements for header -->
+            <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://placehold.co/1200x300/1a202c/e2e8f0?text=AI+Pattern'); background-size: cover; filter: blur(5px);"></div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- Development Applications Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>💻</span><h2 class="text-3xl font-semibold text-purple-300">פיתוח אפליקציות</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://base44.com/" target="_blank" rel="noopener noreferrer">base44</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה עוצמתית לפיתוח אפליקציות מהיר, המאפשרת יצירת פתרונות מותאמים אישית בקלות וביעילות.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://replit.com/" target="_blank" rel="noopener noreferrer">replit</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            סביבת פיתוח מקוונת (IDE) חדשנית המאפשרת לכתוב, להריץ ולשתף קוד במגוון שפות תכנות ישירות מהדפדפן, ללא צורך בהתקנה.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini Canvas</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי מבית גוגל המאפשר יצירה איטרטיבית ואינטואיטיבית של תוכן, כולל קוד וטקסט, בסביבה שיתופית וגמישה.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Presentation Design Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>📊</span><h2 class="text-3xl font-semibold text-green-300">עיצוב מצגות</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://gamma.app/" target="_blank" rel="noopener noreferrer">gamma ai</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI חכם ליצירת מצגות מעוצבות ומרהיבות במהירות, עם תבניות חכמות ויכולות עיצוב אוטומטיות.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.genspark.ai/" target="_blank" rel="noopener noreferrer">Genspark</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה חדשנית ליצירת מצגות דינמיות ואינטראקטיביות, המשלבת אלמנטים ויזואליים מתקדמים לחוויה מרשימה.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Website & Landing Page Building Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>🌐</span><h2 class="text-3xl font-semibold text-yellow-300">בניית אתרים ודפי נחיתה</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://lovable.ai/" target="_blank" rel="noopener noreferrer">Lovable</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי אינטואיטיבי ומהנה לבניית אתרים ודפי נחיתה עם דגש על חווית משתמש אופטימלית ועיצוב אסתטי.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://bolt.new/" target="_blank" rel="noopener noreferrer">Bolt</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה ידידותית במיוחד למתחילים לבניית אתרים מהירה וקלה, ללא צורך בידע קודם בתכנות.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.cursor.sh/" target="_blank" rel="noopener noreferrer">Cursor</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            עורך קוד מתקדם המשלב יכולות AI חכמות, מתאים למפתחים עם ידע קוד שרוצים לשפר את יעילותם.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.dora.run/" target="_blank" rel="noopener noreferrer">doraAI</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI חדשני לבניית אתרים המאפשר יצירת עיצובים מורכבים ואינטראקטיביים באמצעות בינה מלאכותית.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Images & Videos Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>🎬</span><h2 class="text-3xl font-semibold text-red-300">תמונות וסרטונים</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer">Midjourney</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מחולל תמונות AI מוביל המייצר תמונות מרהיבות ואיכותיות ברמה אמנותית גבוהה מתיאורי טקסט.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://openai.com/sora" target="_blank" rel="noopener noreferrer">ChatGPT - Sora</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מודל AI פורץ דרך מבית OpenAI ליצירת סרטונים ריאליסטיים ודמיוניים מתיאורי טקסט.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://deepmind.google/discover/blog/veo-our-most-capable-text-to-video-model/" target="_blank" rel="noopener noreferrer">veo3</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה מתקדמת ליצירת וידאו המבוססת על AI, המאפשרת הפקת סרטונים מקצועיים בקלות ובמהירות.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">runway</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            חבילת כלים יצירתיים מקיפה המבוססת על AI לעריכת וידאו, יצירת אנימציות, אפקטים ועוד.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.arcanalabs.ai/" target="_blank" rel="noopener noreferrer">arcanelabs</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI מתקדמים ליצירת תוכן ויזואלי ייחודי, כולל תמונות וסרטונים עם אפקטים מיוחדים וחדשניים.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://app.klingai.com/global/" target="_blank" rel="noopener noreferrer">קלינג 2.0</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מחולל וידאו AI עוצמתי המאפשר יצירת סרטונים מורכבים ואיכותיים מתיאורי טקסט.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://lumalabs.ai/" target="_blank" rel="noopener noreferrer">Luma</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            טכנולוגיית AI חדשנית ליצירת מודלים תלת-ממדיים ותמונות פוטוריאליסטיות מדהימות.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://leonardo.ai/" target="_blank" rel="noopener noreferrer">Leonardo.ai</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה ליצירת תמונות ואמנות באמצעות AI, עם מגוון רחב של סגנונות ואפשרויות התאמה אישית.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.heygen.com/" target="_blank" rel="noopener noreferrer">Heygen</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI ליצירת סרטוני וידאו עם אווטארים מדברים, אידיאלי לסרטוני הסברה, שיווק ותוכן חינוכי.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Summaries & Materials Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>📚</span><h2 class="text-3xl font-semibold text-blue-300">סיכומים וחומרים</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מנוע חיפוש מבוסס AI המספק תשובות ישירות ומסוכמות עם מקורות מידע מהימנים.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://consensus.app/" target="_blank" rel="noopener noreferrer">קונסנזוס</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI המסייע בסיכום מידע ממקורות מרובים, ומציג את הקונצנזוס והמחלוקות בנושא מסוים.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">chatGPT</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מודל שפה גדול ורב-תכליתי המאפשר שיחות טקסט, כתיבת תוכן, סיכומים ועוד.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Podcast Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>🎙️</span><h2 class="text-3xl font-semibold text-orange-300">פודקאסט</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://notebooklm.google/" target="_blank" rel="noopener noreferrer">NotebookLM</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי מבית גוגל המאפשר לארגן, לסכם ולנתח מידע ממקורות שונים, כולל תמלול פודקאסטים והפקת תובנות.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Zoom Meeting Transcriber Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>🗣️</span><h2 class="text-3xl font-semibold text-teal-300">מתמלל פגישות זום</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.timeos.ai/" target="_blank" rel="noopener noreferrer">TimeOS</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI חכם המתמלל פגישות זום באופן אוטומטי, מזהה דוברים ומסכם נקודות מפתח ופעולות נדרשות.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audio & Music Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>🎵</span><h2 class="text-3xl font-semibold text-pink-300">אודיו ומוזיקה</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.kits.ai/" target="_blank" rel="noopener noreferrer">Kits.ai</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה חדשנית ליצירת מוזיקה ואודיו באמצעות AI, כולל כלים להפקת ביטים, צלילים ועיבוד קולי.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://murf.ai/" target="_blank" rel="noopener noreferrer">murf.ai</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מחולל קול AI מקצועי המאפשר יצירת קריינות ופודקאסטים באיכות גבוהה במגוון קולות ושפות.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Automation Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>⚙️</span><h2 class="text-3xl font-semibold text-indigo-300">אוטומציה עסקית</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://zapier.com/" target="_blank" rel="noopener noreferrer">zapier</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי אוטומציה מוביל המחבר בין אלפי אפליקציות שונות ומאפשר יצירת זרימות עבודה אוטומטיות ללא צורך בקוד.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://manychat.com/" target="_blank" rel="noopener noreferrer">Manychat</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            פלטפורמה לבניית צ'אטבוטים חכמים לאוטומציה של שיווק, מכירות ותמיכת לקוחות בפלטפורמות מסרים.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marketing Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>📈</span><h2 class="text-3xl font-semibold text-lime-300">שיווק</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://adcreative.ai/" target="_blank" rel="noopener noreferrer">Adcreative.ai</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            כלי AI חכם ליצירת קריאייטיבים מנצחים למודעות פרסום, המאפשר הפקת עיצובים מותאמים אישית ויעילים.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Productivity & Time Management Category -->
+            <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="category-title">
+                    <span>⏰</span><h2 class="text-3xl font-semibold text-cyan-300">פרודוקטיביות וניהול זמן</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div class="card">
+                        <h3 class="platform-name text-white mb-2">
+                            <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">Notion</a>
+                        </h3>
+                        <p class="text-gray-400">
+                            מרחב עבודה הכל-באחד לניהול פרויקטים, רישום הערות, ארגון מידע ועוד, עם יכולות AI משולבות.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-16 py-8 text-gray-500 text-sm border-t border-gray-700">
+            <p>&copy; 2025 מדריך פלטפורמות AI. כל הזכויות שמורות.</p>
+            <p class="mt-2 text-gray-600">נוצר באהבה עם Gemini ואביב מלכה האלוף!</p>
+        </footer>
+    </div>
+</body>
+</html>
